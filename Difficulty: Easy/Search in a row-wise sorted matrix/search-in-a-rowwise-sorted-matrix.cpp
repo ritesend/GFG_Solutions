@@ -11,19 +11,29 @@ class Solution {
     // Function to search a given number in row-column sorted matrix.
     bool searchRowMatrix(vector<vector<int>> &mat, int x) {
         // code here
-        bool res = false;
-        for (auto i:mat) {
-            int n = i.size();
-            int l = 0;
-            int r = n-1;
-            int mid = (l+r)/2;
-            while(l<=r) {
-                mid = (l+r)/2;
-                if (i[mid] == x) return true;
-                else if (i[mid]>x) r = mid-1;
-                else l = mid+1;
-            }
+        // bool res = false;
+        // for (auto i:mat) {
+        //     int n = i.size();
+        //     int l = 0;
+        //     int r = n-1;
+        //     int mid = (l+r)/2;
+        //     while(l<=r) {
+        //         mid = (l+r)/2;
+        //         if (i[mid] == x) return true;
+        //         else if (i[mid]>x) r = mid-1;
+        //         else l = mid+1;
+        //     }
             
+        // }
+        // return false;
+        
+        
+        for(int i=0;i<mat.size();i++){
+            for(int j=0;j<mat[0].size();j++){
+                if(mat[i][j]==x){
+                    return true;
+                }
+            }
         }
         return false;
     }
