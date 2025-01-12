@@ -9,33 +9,27 @@ class Solution {
   public:
     int maxWater(vector<int> &arr) {
         // code here
-        int n = arr.size();
-        int low = 0;
-        int high = n-1;
-        int mi = 0;
-        int ma =0;
-        int ans =0;
-        while(low<high){
-            if(arr[low]<arr[high]){
-                if(arr[low]>mi){
-                    mi = arr[low];
-                }
-                else {
-                    ans = ans + mi-arr[low];
-                }
-                low++;
-            }
-            else {
-                if(arr[high]>ma){
-                    ma = arr[high];
-                }
-                else{
-                    ans = ans + ma-arr[high];
-                }
-                high--;
-            }
+        int n=arr.size();
+        vector<int>leftMax(n);
+        vector<int>rightMax(n);
+        if(n==0) return 0;
+        
+        leftMax[0]=arr[0];
+        for(int i=1;i<n;i++){
+            leftMax[i]=max(arr[i],leftMax[i-1]);
         }
-        return ans;
+        
+        rightMax[n - 1] = arr[n - 1];
+        for (int i=n-2;i>=0;i--) {
+            rightMax[i] = max(arr[i],rightMax[i + 1]);
+        }
+        
+        int waterTrapped=0;
+        
+        for(int i=0;i<n;i++){
+            waterTrapped+=(min(leftMax[i],rightMax[i])-arr[i]);
+        }
+        return waterTrapped;
     }
 };
 
