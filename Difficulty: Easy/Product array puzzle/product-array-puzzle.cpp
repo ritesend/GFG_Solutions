@@ -12,24 +12,33 @@ class Solution{
         // code here
         int n=arr.size();
         int zerocnt=0;
-        int pro=1;
+        int product=1;
+        
         
         
         for(int i=0;i<n;i++){
-            if(arr[i]==0)zerocnt++;
-            else pro*=arr[i];
+            if(arr[i]==0){
+                zerocnt++;
+            }
+            else{
+                product*=arr[i];
+            }
         }
+        
         vector<int>res(n,0);
         if(zerocnt>1){
             return res;
         }
         
         for(int i=0;i<n;i++){
-            if(arr[i]==0)res[i]=pro;
+            if(arr[i]==0){
+                res[i]=product;
+            }
             else if(zerocnt==0){
-                res[i]=pro/arr[i];
+                res[i]=product/arr[i];
             }
         }
+        
         return res;
     }
 };
