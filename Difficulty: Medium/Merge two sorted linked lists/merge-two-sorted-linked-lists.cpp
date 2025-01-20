@@ -54,9 +54,11 @@ class Solution {
   public:
     Node* sortedMerge(Node* head1, Node* head2) {
         // code here
+        
         if(!head1){
             return head2;
         }
+        
         if(!head2){
             return head1;
         }
@@ -73,6 +75,7 @@ class Solution {
         }
         
         Node* newHead=temp;
+        
         
         while(head1!=NULL && head2!=NULL){
             if(head1->data<head2->data){
@@ -92,6 +95,7 @@ class Solution {
         if(!head2){
             temp->next=head1;
         }
+        
         
         return newHead;
     }
