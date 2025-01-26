@@ -84,30 +84,29 @@ struct Node
 class Solution {
   public:
     // Function to remove a loop in the linked list.
-    
     void removeLoop(Node* head) {
+        // code here
         if (!head || !head->next) return;
     
         Node* slow = head;
         Node* fast = head;
 
         while (fast != NULL && fast->next != NULL) {
-        slow = slow->next;
-        fast = fast->next->next;
+            slow = slow->next;
+            fast = fast->next->next;
 
-        // If a loop is detected
             if (slow == fast) {
                 break;
             }
         }
 
-    // If no loop is detected, return
+    
         if (fast == NULL || fast->next == NULL) return;
 
-    // Step 2: Find the starting point of the loop
+    
         slow = head;
         if (slow == fast) {
-        // Special case: If the loop starts at the head
+        
             while (fast->next != slow) {
                 fast = fast->next;
             }
@@ -118,7 +117,7 @@ class Solution {
             }
         }
 
-    // Step 3: Remove the loop
+    
         fast->next = NULL;
     }
 };
