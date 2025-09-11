@@ -2,42 +2,22 @@ class Solution {
   public:
     string largestSwap(string &s) {
         // code here
-         vector<vector<int>> arr(10);
-        
-        for(int i=0; i<s.size(); i++){
-            
-            int t = s[i] - '0';
-            
-            arr[t].push_back(i);
-        }
-        
-        for(int i=0; i<s.size(); i++){
-            
-            int t = s[i] - '0';
-            
-            bool flag = false;
-            
-            int index = -1;
-            
-            for(int  j = 9; j>t; j--){
-                
-                int val = -1;
-                
-                if(arr[j].size() > 0 ) val = arr[j][arr[j].size() - 1];
-                
-                if(val > i) {
-                    index = val;
-                    break;
+        for(int i=0;i<s.length();i++){
+            int biggerIdx=-1;
+            for(int j=i+1;j<s.length();j++){
+                if(s[i]<s[j]){
+                    if(biggerIdx==-1 || s[biggerIdx]<=s[j]){
+                        biggerIdx=j;
+                    }
                 }
             }
             
-            if(index != -1){
-               swap(s[i], s[index]);
-               break;
-                
+            if(biggerIdx!=-1){
+                swap(s[i],s[biggerIdx]);
+                return s;
             }
+            
         }
-        
         return s;
     }
 };
